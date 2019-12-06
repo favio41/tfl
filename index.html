@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TFL</title>
+  <style>
+    html, body{
+      background-color: #2d2a2a;
+      color: blanchedalmond;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body onload="onLoad()">
+  <h4>Next empty train Eastbound:</h4>
+  <ul>
+    <li id="nextTrainFromEaling"></li>
+    <li id="nextEmptyTrainFromNorthActon"></li>
+    <li id="nextEmptyTrainFromWhiteCity"></li>
+  </ul>
+  <footer>
+    <span>Powered by TfL Open Data</span>
+  </footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.26.1/ramda.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"></script>
+<script src="enum.js"></script>
+<script src="events.js"></script>
+<script src="analytics.js"></script>
+<script src="class.js"></script>
+<script src="controller.js"></script>
+</html>
