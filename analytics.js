@@ -4,6 +4,13 @@ function getNextTrainFromEaling(stations){
   return platform.getTrainAtLocation('At Ealing Broadway')
 }
 
+function getNextTrainFrom(station, stations){
+  return stations
+    .getStation(station)
+    .getPlatform(station.platforms.EASTBOUND[0])
+    .trains
+}
+
 function getNextEmptyTrainFromNorthActon(stations){
   const trainAtPlatform = stations
     .getStation(STATIONS.NOTH_ACTON)
@@ -36,13 +43,27 @@ function getNextEmptyTrainFromWhiteCity(stations){
 class AnalyticsService {
   static EmptyTrainCalculation(stations){
     const emptyTrainAnalyticsEvent = new EmptyTrainAnalyticsEvent()
-
-    emptyTrainAnalyticsEvent.nextTrainFromEaling = getNextTrainFromEaling(stations)
     
     emptyTrainAnalyticsEvent.nextEmptyTrainFromNorthActon = getNextEmptyTrainFromNorthActon(stations)
     
     emptyTrainAnalyticsEvent.nextEmptyTrainFromWhiteCity = getNextEmptyTrainFromWhiteCity(stations)
     
     emptyTrainAnalyticsEvent.submit()
+  }
+
+  static NextTrainCalculation(stations){
+    const nextTrainAnalyticsEvent = new NextTrainAnalyticsEvent()
+
+    const nextTrainFromEaling = getNextTrainFromEaling(stations)
+    if(nextTrainFromEaling){
+      nextTrainAnalyticsEvent.ealing = [nextTrainFromEaling]
+    }
+
+    Object.values(STATIONS).forEach(station => {
+      if(station !== STATIONS.EALING){
+        nextTrainAnalyticsEvent[station.id] = getNextTrainFrom(station, stations)
+      }
+    })
+    nextTrainAnalyticsEvent.submit()
   }
 }

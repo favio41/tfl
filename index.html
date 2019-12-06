@@ -16,9 +16,17 @@
 <body onload="onLoad()">
   <h4>Next empty train Eastbound:</h4>
   <ul>
-    <li id="nextTrainFromEaling"></li>
     <li id="nextEmptyTrainFromNorthActon"></li>
     <li id="nextEmptyTrainFromWhiteCity"></li>
+  </ul>
+  <h4>Next trains at:</h4>
+  <ul>
+      <li id="nextTrainAt_ealing"></li>
+      <li id="nextTrainAt_westActon"></li>
+      <li id="nextTrainAt_nothActon"></li>
+      <li id="nextTrainAt_eastActon"></li>
+      <li id="nextTrainAt_whiteCity"></li>
+      <li id="nextTrainAt_shepardsBush"></li>
   </ul>
   <footer>
     <span>Powered by TfL Open Data</span>
@@ -27,6 +35,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.26.1/ramda.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"></script>
+
+<!-- <script src="tmp/node_modules/ramda/dist/ramda.min.js"></script>
+<script src="tmp/node_modules/x2js/dist/x2js.min.js"></script>
+<script src="tmp/node_modules/axios/dist/axios.js"></script> -->
 <script src="enum.js"></script>
 <script src="events.js"></script>
 <script src="analytics.js"></script>

@@ -5,14 +5,13 @@ global = {
 
 
 function onLoad() {
+  global.model.addEventListener(TracknetLoadedEvent.name, (customEvent) => {
+    AnalyticsService.EmptyTrainCalculation(customEvent.detail)
+    AnalyticsService.NextTrainCalculation(customEvent.detail)
+  })
+
   global.model.addEventListener(EmptyTrainAnalyticsEvent.name, (event) => {
     console.log('EmptyTrainAnalyticsEvent received', event)
-    
-    if(event.nextTrainFromEaling){
-      nextTrainFromEaling.innerText = `Next train departs from Ealing Broadway at: ${event.nextTrainFromEaling.departure.time}`
-    } else {
-      nextTrainFromEaling.innerText = 'No trains waiting at Ealing Broadway'
-    }
 
     if(event.nextEmptyTrainFromNorthActon){
       nextEmptyTrainFromNorthActon.innerText = `Empty train at North Acton departs at: ${event.nextEmptyTrainFromNorthActon.departure.time}`
@@ -27,9 +26,19 @@ function onLoad() {
     }  
   })
 
-  global.model.addEventListener(TracknetLoadedEvent.name, (customEvent) => {
-    AnalyticsService.EmptyTrainCalculation(customEvent.detail)
+  global.model.addEventListener(NextTrainAnalyticsEvent.name, (event) => {
+    console.log('NextTrainAnalyticsEvent received', event)
+    Object.values(STATIONS).forEach(station => {
+      let message = `<pre>${station.id}: \n`;
+      (event[station.id] || []).forEach(train => {
+         message += `(${train.id})${train.location} ${train.departure.time} +${train.departure.arriveIn}\n`;
+      })
+      message += '</pre>'
+      document.querySelector(`#nextTrainAt_${station.id}`).innerHTML = message
+        
+    })
+
   })
-  
+
   global.app.toggleExecution()
 }

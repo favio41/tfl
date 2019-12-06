@@ -14,6 +14,12 @@ class EmptyTrainAnalyticsEvent extends AutoSubmitEvent {
   }
 }
 
+class NextTrainAnalyticsEvent extends AutoSubmitEvent {
+  constructor(data){
+    super('NextTrainAnalyticsEvent', data)
+  }
+}
+
 class TracknetLoadedEvent extends AutoSubmitEvent {
   constructor(data){
     super('TracknetLoadedEvent', data)

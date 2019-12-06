@@ -5,7 +5,8 @@ var STATIONS = {
     stationCode: 'EBY',
     platforms: {
       EASTBOUND: ["TC2012", "TC2007"],
-    }
+    },
+    nextStation: 'WEST_ACTON'
   },
   WEST_ACTON: {
     id: 'westActon',
@@ -13,16 +14,18 @@ var STATIONS = {
     stationCode: 'WAC',
     platforms: {
       EASTBOUND: ['TC2209'],
-    }
+    },
+    nextStation: 'NOTH_ACTON'
   },
   NOTH_ACTON: {
     id: 'nothActon',
     stopPointId: '940GZZLUNAN',
     stationCode: 'NAC',
     platforms: {
-      EASTBOUND: ['TC2347', 'TC2325'],
+      EASTBOUND: ['TC2325', 'TC2347'],
       EMPTY_TRAIN: ['TC2347']
-    }
+    },
+    nextStation: 'EAST_ACTON'
   },
   EAST_ACTON: {
     id: 'eastActon',
@@ -30,7 +33,8 @@ var STATIONS = {
     stationCode: 'EAC',
     platforms: {
       EASTBOUND: ['TC2511'],
-    }
+    },
+    nextStation: 'WHITE_CITY'
   },
   WHITE_CITY: {
     id: 'whiteCity',
@@ -39,7 +43,8 @@ var STATIONS = {
     platforms: {
       EASTBOUND: ['TC2627', 'TC2743'],
       EMPTY_TRAIN: ['TC2743']
-    }
+    },
+    nextStation: 'SHEPARDS_BUSH'
   },
   SHEPARDS_BUSH: {
     id: 'shepardsBush',

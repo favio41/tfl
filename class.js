@@ -65,6 +65,7 @@ class Tracknet {
 
   async load() {
     const baseUrl = `https://api.tfl.gov.uk/TrackerNet/PredictionDetailed/C/${this.station.stationCode}`
+    // const baseUrl = `http://localhost:8080/tmp/mocks/tracknet/${this.station.stationCode}.xml`
     const queryParams = `?app_id=${global.app.credentials.appId}&app_key=${global.app.credentials.appKey}`
     let { data } = await axios.get(baseUrl + queryParams)
     data = Utils.xmlParser(data)
@@ -113,5 +114,6 @@ class Utils {
   }
   static xmlParser(xml) {
     return (new X2JS()).xml_str2json(xml);
+//     return (new X2JS()).xml2js(xml);
   }
 }
